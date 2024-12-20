@@ -1,0 +1,22 @@
+1)  create table salesperson( sid int not null, sname varchar(20) not null , city varchar(20) not null , comm decimal (4,2) not null, primary key(sid));
+  insert into salesperson values (1 , 'Peel' , 'London', 0.12 );
+ insert into salesperson values (2 , 'serres' , 'sanjose ', 0.13 );
+   insert into salesperson values (3 , 'axelrod' , 'newyork ', 0.10 );
+   insert into salesperson values (4 , 'motika' , 'London', 0.11 );
+   insert into salesperson values (5 , 'fran' , 'London', 0.26 );
+  insert into salesperson values (6, 'rifkin' , 'barcelona', 0.15 );
+
+ 2) create table customer( cid int not null, cname varchar(20) not null , city varchar(20) not null , rating int not null, primary key(cid),sid int not null, foreign key(sid) references salesperson(sid));
+   insert into customer values (2001 , 'Hoffen' , 'London', 100,1 );
+   insert into customer values (2002 , 'Gloven' , 'Rome', 200,3 );
+   insert into customer values (2003 , 'liu' , 'Sanjose', 200,2 );
+   insert into customer values (2004 , 'grass' , 'berlin', 300,2 );
+   insert into customer values (2006 , 'clemens' , 'London', 100,1 );
+   insert into customer values (2008 , 'cisneros' , 'Sanjose', 300,6 );
+   insert into customer values (2007 , 'pereira' , 'Rome', 100,4 );
+ 3)
+  select sid , count(*) from customer group by sid; 
+  select s.sname, avg(c.rating) AS average_rating from customer c JOIN salesperson s ON c.sid = s.sid group by s.sid order by average_rating DESC limit 1;
+  select s.sname, avg(c.rating) AS average_rating from customer c JOIN salesperson s ON c.sid = s.sid group by s.sid order by average_rating ASC limit 1;
+  select s.sname FROM customer c JOIN salesperson s ON c.sid = s.sid GROUP BY s.sid, c.city HAVING COUNT(DISTINCT c.city) = 1;
+ 
