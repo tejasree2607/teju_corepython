@@ -1,0 +1,10 @@
+dos:
+  document ur work
+  explore and visualize data
+  communicate the insights
+  get updated with the tools
+donts:
+    dont get biased to the results
+
+    
+  
